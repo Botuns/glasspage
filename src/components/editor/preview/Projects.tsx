@@ -1,5 +1,6 @@
 import { Box, Heading, SimpleGrid, Stack } from "@chakra-ui/react";
-import ProjectItem from "./ProjectItem";
+
+import DisplayCard from "./DisplayCard";
 
 const workData = [
   {
@@ -42,7 +43,7 @@ const Projects = () => {
       <Stack spacing={10}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
           {workData.map((item) => (
-            <ProjectItem {...item} key={item.id} />
+            <DisplayCard {...item} key={item.id} />
           ))}
         </SimpleGrid>
       </Stack>
