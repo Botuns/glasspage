@@ -6,6 +6,7 @@ import {
   Tooltip,
   StyleProps,
 } from "@chakra-ui/react";
+import { useEditorContext } from "./EditorContext";
 
 interface ContentEditableFieldProps {
   as: any;
@@ -16,10 +17,12 @@ interface ContentEditableFieldProps {
   inputAs: any;
   inputFontSize: string;
   inputMinHeight?: string;
+  name: string;
 }
 
 const ContentEditableField = (props: ContentEditableFieldProps) => {
   const [canNotEdit, setCanNotEdit] = useState(false);
+  const { setEditingElement } = useEditorContext();
   const {
     defaultValue,
     editablePreviewStyleProps,
@@ -40,6 +43,7 @@ const ContentEditableField = (props: ContentEditableFieldProps) => {
       {...editableWrapperStyleProps}
       padding={0}
       m={0}
+      onClick={() => setEditingElement(props.name)}
     >
       <Tooltip
         hidden={canNotEdit}

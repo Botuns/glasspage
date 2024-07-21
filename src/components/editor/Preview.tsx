@@ -1,15 +1,24 @@
 "use client";
-import { Box, Flex, Heading, Stack, Text, chakra } from "@chakra-ui/react";
-import Image from "next/image";
+import { Flex, Stack } from "@chakra-ui/react";
+
 import React from "react";
 import Projects from "./preview/Projects";
 import HeroText from "./preview/HeroText";
 import HeroDpCard from "./preview/HeroDpCard";
 import LinkTo from "./preview/LinkTo";
+import { useWatch } from "react-hook-form";
 
 const Preview = () => {
+  const pageStyles = useWatch({ name: "page" });
+
   return (
-    <Stack spacing={"7rem"} w={"full"} px="10%" bg={"primary.700"} py={"3rem"}>
+    <Stack
+      spacing={"7rem"}
+      w={"full"}
+      px="10%"
+      bg={pageStyles.bgColor}
+      py={"3rem"}
+    >
       <Flex
         padding={"1rem"}
         h={"50vh"}

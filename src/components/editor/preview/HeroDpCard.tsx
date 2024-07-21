@@ -9,11 +9,18 @@ import {
 import Image from "next/image";
 import React from "react";
 import ContentEditableField from "../ContentEditableField";
+import { useFormContext, useWatch } from "react-hook-form";
 
 const HeroDpCard = () => {
+  const { control } = useFormContext();
+  const {
+    hero: {
+      dp: { heading: heroStyles, subText: subTextStyles, bgColor: cardBg },
+    },
+  } = useWatch({ control });
   return (
     <Flex
-      bg={"primary.200"}
+      bg={cardBg}
       padding={"1rem"}
       width={"full"}
       h={"100%"}
@@ -33,24 +40,28 @@ const HeroDpCard = () => {
       <Stack w={"full"} spacing={0}>
         <ContentEditableField
           as={Heading}
+          name="hero.dp.heading"
           inputAs={EditableInput}
           hoverBg="primary.400"
           inputFontSize="2rem"
           defaultValue={"Sam Altman"}
           editablePreviewStyleProps={{
-            color: "primary.900",
+            color: heroStyles.textColor,
+            bg: heroStyles.bgColor,
             padding: 0,
             whiteSpace: "nowrap",
           }}
         />
         <ContentEditableField
           as={Text}
+          name="hero.dp.subText"
           inputAs={EditableInput}
           hoverBg="primary.400"
           inputFontSize="1rem"
           defaultValue={"Senior, frontend developer"}
           editablePreviewStyleProps={{
-            color: "dark",
+            color: subTextStyles.textColor,
+            bg: subTextStyles.bgColor,
             padding: 0,
           }}
         />

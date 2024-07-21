@@ -18,17 +18,21 @@ import {
 } from "@chakra-ui/react";
 import ColorEditor from "./ColorEditor";
 import ContentEditableField from "./ContentEditableField";
+import { useEditorContext } from "./EditorContext";
 
 const styleGroup = [
   {
     label: "Background Color",
     Editor: ColorEditor,
+    styleKey: "bgColor",
   },
   {
     label: "Border styles",
   },
   {
     label: "Font Color",
+    Editor: ColorEditor,
+    styleKey: "textColor",
   },
   {
     label: "Font Family",
@@ -36,6 +40,8 @@ const styleGroup = [
 ];
 
 const EditorBar = () => {
+  const { editingElement } = useEditorContext();
+
   return (
     <Flex
       justify={"center"}
@@ -56,7 +62,7 @@ const EditorBar = () => {
         py={2}
       >
         {styleGroup.map((group) => {
-          const { label, Editor } = group;
+          const { label, Editor, styleKey } = group;
           return (
             <Popover key={label}>
               <PopoverTrigger>
@@ -72,7 +78,6 @@ const EditorBar = () => {
                 mt={3}
                 rounded={"0.5rem"}
               >
-                {/* <PopoverArrow /> */}
                 <PopoverCloseButton color={"white"} />
                 <PopoverHeader
                   border={"none"}
@@ -80,9 +85,15 @@ const EditorBar = () => {
                   fontWeight={700}
                   pb={0}
                 >
-                  #900994
+                  {editingElement}
                 </PopoverHeader>
-                <PopoverBody>{Editor ? <Editor /> : <></>}</PopoverBody>
+                <PopoverBody>
+                  {Editor ? (
+                    <Editor name={`${editingElement}.${styleKey}`} />
+                  ) : (
+                    <></>
+                  )}
+                </PopoverBody>
               </PopoverContent>
             </Popover>
           );
