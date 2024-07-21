@@ -105,3 +105,30 @@ a {
     color-scheme: dark;
   }
 }
+
+.conic-gradient-rainbow {
+  background: conic-gradient(
+      from 169deg,
+      #e71f9e83 0%,
+      #7c83e78f 9%,
+      rgba(231, 31, 158, 0.646) 18%,
+      #ec463dad 27%,
+      #ec3a669d 36%,
+      #da2f62ae 45%,
+      #5f2dd5 54%,
+      #6425e2cb 63%,
+      #3a28c3b6 72%,
+      #a4448e9c 81%,
+      #c8b57e7c 100%
+    ),
+    linear-gradient(
+      -169deg,
+      rgba(131, 58, 180, 0.983) 0%,
+      rgba(253, 29, 29, 0.875) 50%,
+      rgb(252, 176, 69) 100%
+    );
+}
+
+test {
+  background: #011d0f;
+}
