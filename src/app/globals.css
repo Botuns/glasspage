@@ -132,3 +132,22 @@ a {
 test {
   background: #011d0f;
 }
+
+.color-editor .react-colorful {
+  height: 240px;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+.color-editor .react-colorful__saturation {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.color-editor .react-colorful__hue {
+  height: 30px;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.color-editor .react-colorful__hue-pointer {
+  width: 30px;
+  height: 30px;
+  border-radius: 0;
+}
